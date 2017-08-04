@@ -2,7 +2,7 @@
 
 This is a proof of concept of real time multiplayer game using bluetooth.
 
-![alt tag](http://image.noelshack.com/fichiers/2017/31/5/1501864702-screenshot-20170804-183745.png)
+![alt tag](http://image.noelshack.com/fichiers/2017/31/5/1501864881-screenshot-20170804-183745.png)
 
 ## Getting Started
 
@@ -33,13 +33,9 @@ public interface IBluetooth {
 
 BluetoothFragment implements this interface.
 
-## Video in action
+## Video
 
 https://www.youtube.com/watch?v=8fA_Q2hFQ8w&feature=youtu.be
-
-## Authors
-
-* **Yacine BENANNOUNE**
 
 ## License
 
