@@ -26,7 +26,7 @@
         android:id="@+id/fragment_libgdx"
         android:layout_height="0dp"
         android:layout_width="fill_parent"
-        android:layout_weight="1.5"/>
+        android:layout_weight="1"/>
 
 
     <fragment
@@ -34,7 +34,7 @@
         android:id="@+id/fragment_ui"
         android:layout_height="0dp"
         android:layout_width="match_parent"
-        android:layout_weight="1"/>
+        android:layout_weight="0.3"/>
 
 
 </LinearLayout>

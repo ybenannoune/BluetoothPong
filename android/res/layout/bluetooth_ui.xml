@@ -14,7 +14,7 @@
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:weightSum="1">
 
         <Button
@@ -28,8 +28,8 @@
         <Spinner
             android:layout_width="0dp"
             android:layout_weight="0.40"
-            android:layout_height="50dp"
-            android:id="@+id/spinner_devices" />
+            android:id="@+id/spinner_devices"
+            android:layout_height="match_parent" />
 
         <Button
             android:text="Connect"

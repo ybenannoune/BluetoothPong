@@ -3,6 +3,7 @@ package com.mygdx.game.Entities;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.mygdx.game.Constants;
+import com.sun.org.apache.bcel.internal.classfile.ConstantNameAndType;
 
 /**
  * Created by Demo on 02/08/2017.
@@ -10,12 +11,18 @@ import com.mygdx.game.Constants;
 
 public class Ball{
 
-    public static final int RADIUS = 15;
+    public static final int RADIUS = 5;
 
     private float m_X;
     private float m_Y;
     private float m_VelX;
     private float m_VelY;
+
+    public Ball()
+    {
+        m_X = Constants.GAME_WIDTH /2;
+        m_Y = Constants.GAME_HEIGHT /2;
+    }
 
     public void draw(ShapeRenderer sr)
     {

@@ -55,11 +55,11 @@ public class BluetoothPong extends ApplicationAdapter implements GestureDetector
 	{
 		if( isHost )
 		{
-			ball.set(Constants.GAME_WIDTH /2 , Constants.GAME_HEIGHT /2,0,-300);
+			ball.set(Constants.GAME_WIDTH /2 , Constants.GAME_HEIGHT /2,0,-Constants.BALL_START_SPEED);
 		}
 		else
 		{
-			ball.set(Constants.GAME_WIDTH /2 , Constants.GAME_HEIGHT /2,0,300);
+			ball.set(Constants.GAME_WIDTH /2 , Constants.GAME_HEIGHT /2,0,Constants.BALL_START_SPEED);
 		}
 	}
 
@@ -82,6 +82,8 @@ public class BluetoothPong extends ApplicationAdapter implements GestureDetector
 
 	public void incomingMessage(String str)
 	{
+		Gdx.app.log(TAG, str);
+
         int index,end;
         // Get Opponent Paddle Position from String
         index = str.indexOf("[");
@@ -91,29 +93,29 @@ public class BluetoothPong extends ApplicationAdapter implements GestureDetector
             if( end > index)
             {
                 String pos = str.substring(index + 1,end);
-                Gdx.app.log(TAG, pos);
+
                 opponentPaddle.set(getFloatFromStr(pos));
             }
         }
-        else //Handle Ball Position Update
-        {
-            index = str.indexOf("{");
-            if(index != -1)
-            {
-                end = str.indexOf("}");
-                if( end > index)
-                {
-                    String content = str.substring(index + 1,end);
-                    Gdx.app.log(TAG, content);
 
-                    String[] splited = content.split(":");
-                    ball.set(getFloatFromStr(splited[0]),
-                            getFloatFromStr(splited[1]),
-                            getFloatFromStr(splited[2]),
-                            getFloatFromStr(splited[3]));
-                }
-            }
-        }
+         //Handle Ball Position Update
+		index = str.indexOf("{");
+		if(index != -1)
+		{
+			end = str.indexOf("}");
+			if( end > index)
+			{
+				String content = str.substring(index + 1,end);
+				Gdx.app.log(TAG, content);
+
+				String[] splited = content.split(":");
+				ball.set(getFloatFromStr(splited[0]),
+						getFloatFromStr(splited[1]),
+						getFloatFromStr(splited[2]),
+						getFloatFromStr(splited[3]));
+			}
+		}
+
 	}
 
 	@Override
@@ -132,11 +134,11 @@ public class BluetoothPong extends ApplicationAdapter implements GestureDetector
         if(Intersector.intersectSegments(ball.getX(),ball.getY(),(ball.getX() + (ball.getVelocityX() * deltaTime)),( ball.getY() +  (ball.getVelocityY() * deltaTime)),
                 playerPaddle.getX(),playerPaddle.getY() + Paddle.HEIGHT,playerPaddle.getX() + Paddle.WIDTH, playerPaddle.getY() + Paddle.HEIGHT,intersectVector))
         {
-            float newVelY = ( ball.getVelocityY() + ( 20 * Math.signum( ball.getVelocityY() ) ) ) *-1;
-            float newVelX =  (3.0f * (ball.getX() - (playerPaddle.getX()+ Paddle.WIDTH / 2)));
+            float newVelY = ( ball.getVelocityY() + ( Constants.BALL_SPEED_INCREMENT * Math.signum( ball.getVelocityY() ) ) ) *-1;
+            float newVelX =  (Constants.BALL_PADDLE_EFFECT * (ball.getX() - (playerPaddle.getX()+ Paddle.WIDTH / 2)));
 
             //apply paddle bounce
-            ball.set(intersectVector.x,intersectVector.y,newVelX,newVelY);
+            ball.set(intersectVector.x,intersectVector.y + Ball.RADIUS,newVelX,newVelY);
             String updatePositionMessage = "{" + intersectVector.x + ":" + (Constants.GAME_HEIGHT - intersectVector.y) + ":" + newVelX + ":" + -newVelY + "}";
             bluetoothCom.write(updatePositionMessage);
         }

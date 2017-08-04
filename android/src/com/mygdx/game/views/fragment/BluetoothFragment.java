@@ -106,10 +106,12 @@ public class BluetoothFragment extends Fragment implements View.OnClickListener,
             case R.id.button_discover:
                 stringArray.clear();
                 mDevices.clear();
+                bluetoothService.stop();
                 bluetoothService.discoverDevices();
                 break;
 
             case R.id.button_host:
+                bluetoothService.stop();
                 bluetoothService.enableDiscoveribility();
                 bluetoothService.startListening();
                 break;
