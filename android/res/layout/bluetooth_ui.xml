@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1">
+
+    <Button
+        android:text="HOST"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/button_host"
+        style="@style/Widget.AppCompat.Button.Colored" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:weightSum="1">
+
+        <Button
+            android:text="Discover"
+            android:layout_width="0dp"
+            android:layout_weight="0.3"
+            android:layout_height="wrap_content"
+            android:id="@+id/button_discover"
+            style="@android:style/Widget.Button.Small" />
+
+        <Spinner
+            android:layout_width="0dp"
+            android:layout_weight="0.40"
+            android:layout_height="50dp"
+            android:id="@+id/spinner_devices" />
+
+        <Button
+            android:text="Connect"
+            android:layout_width="0dp"
+            android:layout_weight="0.3"
+            android:layout_height="wrap_content"
+            android:id="@+id/button_connect"
+            style="@android:style/Widget.Button.Small" />
+
+    </LinearLayout>
+
+</LinearLayout>
