@@ -15,10 +15,12 @@ Since Android API 6.0 you need to allow permissions ACCESS_COARSE_LOCATION, loca
 If permissions are denied the application close itself.
 
 Data transmitted over bluetooth (Position of paddle and Ball after hit with the paddle)
-/com.mygdx.game I/BluetoothPong: [80.0] - position of the opponent paddle
+
+com.mygdx.game I/BluetoothPong: [80.0] - position of the opponent paddle
+
 com.mygdx.game I/BluetoothPong: {144.77269:465.0:-155.2809:-210.0} - ball.x : ball.y : ball.velocityX : ball.velocityY
 
-###Interfacing with platform specific code
+### Interfacing with platform specific code
 The UI and Bluetooth connection is managed in Android native, while the game is Core.
 It is necessary to access platform specific APIs in core to be able to send Bluetooth messages.
 
